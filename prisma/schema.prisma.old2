@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model Employees {
+  id            Int @id @default(autoincrement())
+  name          String
+  department    Departments @relation(fields: [department_id], references: [id])
+  department_id Int 
+  position      Positions @relation(fields: [position_id], references: [id])
+  position_id   Int
+  tasks         Tasks[]
+}
+
+model Positions {
+  id       Int @id @default(autoincrement())
+  title    String
+  level    Int
+  employee Employees[]
+}
+
+
+
+model Tasks {
+  id          Int @id @default(autoincrement())
+  title       String
+  description String
+  employee    Employees @relation(fields: [assignee_id], references: [id])
+  assignee_id Int
+  status      String
+}
+
+
+
+model Departments {
+  id                   Int @id @default(autoincrement())
+  name                 String
+  employee             Employees[]
+  parent_department_id Int?
+  parent_department    Departments? @relation("ParentDepartment", fields: [parent_department_id], references: [id])
+  child_department     Departments[] @relation("ParentDepartment")
+}
+
+
+/*
+model Departments {
+  id                   Int @id @default(autoincrement())
+  name                 String @unique
+  employee             Employees[]
+  parent_department_id Int?
+  parent_department    Departments? @relation("ParentDepartment", fields: [parent_department_id], references: [id])
+  child_department     Departments[] @relation("ParentDepartment")
+}
+
+model Employees {
+  id            Int @id @default(autoincrement())
+  name          String
+  department    Departments? @relation(fields: [department_id], references: [id])
+  department_id Int?
+}
+*/
