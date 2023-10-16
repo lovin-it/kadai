@@ -6,7 +6,7 @@ Prismaとtypescriptの勉強用
 # 使用環境
 起動を確認している環境は以下の通りです。<br>
 < OS > Mac Ventura 13.2.1<br>
-< Node.js > Version 20.8.0<br>
+< Node.js > 20.8.0<br>
 < Prisma > 10.2.0<br>
 < TypeScript > 5.2.2<br>
 < Yargs > 17.7.2
