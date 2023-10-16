@@ -6,9 +6,9 @@ const prisma = new PrismaClient()
 //オプション引数を設定
 const argv = yargs
     .options({
-        name:{
+        department:{
             type: 'string',
-            alias: 'n',
+            alias: 'd',
             description: '部署名',
             default: '開発チーム',
         },
@@ -26,7 +26,7 @@ async function main() {
         where:{
             employee:{
                 department:{
-                    name: argv.name,
+                    name: argv.department,
                 }
             },
         },
