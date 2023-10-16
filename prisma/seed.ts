@@ -14,7 +14,7 @@ async function main() {
     })
 
     const it_hq = await prisma.departments.upsert({
-        where: { id: 2},
+        where: {id: 2},
         update: {},
         create: {
             name: 'IT本部',
@@ -34,7 +34,7 @@ async function main() {
     
 
     const it_hq2 = await prisma.departments.upsert({
-        where: { id: 4},
+        where: {id: 4},
         update: {},
         create: {
             name: '開発チーム',
@@ -46,7 +46,7 @@ async function main() {
 
     
     const president = await prisma.positions.upsert({
-        where: { id: 1},
+        where: {id: 1},
         update: {},
         create: {
             title: '社長',
@@ -62,7 +62,7 @@ async function main() {
     })
 
     const it_maneger = await prisma.positions.upsert({
-        where: { id: 2},
+        where: {id: 2},
         update: {},
         create: {
             title: '部長',
@@ -77,7 +77,7 @@ async function main() {
     })
 
     const section_chief = await prisma.positions.upsert({
-        where: { id:3 },
+        where: {id:3 },
         update: {},
         create: {
             title: '課長',
@@ -173,87 +173,6 @@ async function main() {
     })
     
 }
-
-    //console.log({ sato, suzuki, nakamura})
-    
-/*
-    const general = await prisma.positions.upsert({
-        where: { id: 2},
-        update: {},
-        create: {
-            title: '一般社員',
-            level: 1,
-            employee: {
-                create: {
-                    name:'中村三郎',
-                    department_id: 3,
-                }
-            }
-        }
-    })
-
-    const general2 = await prisma.positions.upsert({
-        where: { id: 3},
-        update: {},
-        create: {
-            title: '一般社員',
-            level: 1,
-            employee: {
-                create: {
-                    name: '伊藤四郎',
-                    department_id: 3,
-                }
-            }
-        }
-    })
-    */
-
-    /*
-    const tanaka = await prisma.employees.upsert({
-        where: { id: 4 },
-        update: {},
-        create: {
-            name: '田中四郎',
-            department:{
-                create:{
-                    name: '設計チーム',
-                    parent_department_id: 2
-                }
-            },
-            position: {
-                create: {
-                    title: '一般社員',
-                    level: 4,
-                },
-            },
-            tasks: {
-                create:{
-                    title: '単体テスト',
-                    description: '単体テスト',
-                    status: '完了',
-                }
-            },
-        },
-    })
-    */
-    
-    //従業員
-    /*
-    const goto = await prisma.employees.create({
-        data: {
-            name: "後藤五郎",
-            position_id: 1,
-        },
-    })
-    
-    const goto2 = await prisma.employees.create({
-        data: {
-            name: "後藤五郎",
-            department_id: 2,
-            position_id: 2,
-        },
-    })
-    */
     
 
 
@@ -272,7 +191,3 @@ main()
 
 
 
-
-/*
-where : 条件が一致したものが存在する場合updateなければcreate
-*/
